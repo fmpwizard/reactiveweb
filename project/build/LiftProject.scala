@@ -11,6 +11,7 @@ class LiftProject(info: ProjectInfo) extends DefaultWebProject(info) {
   // If you're using JRebel for Lift development, uncomment
   // this line
   // override def scanDirectories = Nil
+  val sonatype_snapshot = "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots"
 
   System.setProperty("h2.bindAddress", "127.0.0.1")
 

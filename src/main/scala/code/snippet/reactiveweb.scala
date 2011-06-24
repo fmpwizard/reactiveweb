@@ -32,10 +32,10 @@ import js.jquery._
 import reactive._
 import web._
 
-class reactiveweb extends Logger with Observing{
+class reactiveweb extends common.Logger with Observing{
   import html.Select
   val statesSelect= Select(Val(CitiesAndStates3.states))
-  statesSelect.selectedIndex.value ()= Some(0)
+  statesSelect.selectedIndex ()= Some(0)
 
   val validCitiesSignal= statesSelect.selectedItem map {
     case None => Nil
@@ -43,13 +43,13 @@ class reactiveweb extends Logger with Observing{
   }
 
   val citiesSelect = Select(validCitiesSignal)
-  citiesSelect.selectedIndex.value ()= Some(0)
+  citiesSelect.selectedIndex ()= Some(0)
 
   val validIdsSignal = citiesSelect.selectedItem.map(_.toList flatMap CitiesAndStates3.idsFor)
   val idsSelect = Select(validIdsSignal)
-  idsSelect.selectedIndex.value ()= Some(0)
-  //idsSelect.selectedIndex.value foreach {i => println("changed to " + i)}
-  //println(idsSelect.selectedIndex.value.now==None)
+  idsSelect.selectedIndex ()= Some(0)
+  //idsSelect.selectedIndex foreach {i => println("changed to " + i)}
+  //println(idsSelect.selectedIndex.now==None)
 
   def render ={
     "#states" #> statesSelect &
@@ -59,7 +59,7 @@ class reactiveweb extends Logger with Observing{
  
 }
 
-object CitiesAndStates3 extends Logger {
+object CitiesAndStates3 extends common.Logger {
   val citiesAndStates = List("Alabama" -> "Birmingham",
                              "Alabama" -> "Huntsville",
                              "Alabama" -> "Mobile",

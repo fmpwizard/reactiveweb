@@ -91,7 +91,7 @@ class Boot extends Observing{
     import html.Select
     import com.fmpwizard.code.snippet.CitiesAndStates3
   val statesSelect= Select(Val(CitiesAndStates3.states))
-  statesSelect.selectedIndex.value ()= Some(0)
+  statesSelect.selectedIndex ()= Some(0)
 
   val validCitiesSignal= statesSelect.selectedItem map {
     case None => Nil
@@ -99,25 +99,25 @@ class Boot extends Observing{
   }
 
   val citiesSelect = Select(validCitiesSignal)
-  citiesSelect.selectedIndex.value ()= Some(0)
+  citiesSelect.selectedIndex ()= Some(0)
 
   val validIdsSignal = citiesSelect.selectedItem.map(_.toList flatMap CitiesAndStates3.idsFor)
   val idsSelect = Select(validIdsSignal)
-  idsSelect.selectedIndex.value ()= Some(0)
-  idsSelect.selectedIndex.value foreach {i => println("changed to " + i)}
-  println(idsSelect.selectedIndex.value.now)
+  idsSelect.selectedIndex ()= Some(0)
+  idsSelect.selectedIndex foreach {i => println("changed to " + i)}
+  println(idsSelect.selectedIndex.now)
 
     println("Id is: %s".format(idsSelect.selectedItem.now))
-    statesSelect.selectedIndex.value()=Some(5)
+    statesSelect.selectedIndex()=Some(5)
     println("Id is: %s".format(idsSelect.selectedItem.now))
-    statesSelect.selectedIndex.value()=Some(0)
+    statesSelect.selectedIndex()=Some(0)
     println("Id is: %s".format(idsSelect.selectedItem.now))
-    println(idsSelect.selectedIndex.value.now)
-    println(citiesSelect.selectedIndex.value.now)
-    citiesSelect.selectedIndex.value()=Some(1)
+    println(idsSelect.selectedIndex.now)
+    println(citiesSelect.selectedIndex.now)
+    citiesSelect.selectedIndex()=Some(1)
     println("Id is: %s".format(idsSelect.selectedItem.now))
-    println(citiesSelect.selectedIndex.value.now)
-    println(idsSelect.selectedIndex.value.now)
+    println(citiesSelect.selectedIndex.now)
+    println(idsSelect.selectedIndex.now)
 
 
 
